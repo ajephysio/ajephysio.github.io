@@ -1,515 +1,1321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Joint Effort Mobile Physiotherapy | Ivan | Brisbane West & Ipswich</title>
-<meta name="description" content="AHPRA-registered mobile physiotherapy serving western Brisbane and Ipswich. NDIS, aged care, GP referrals and private clients. Home visits by Ivan.">
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --sage: #7a8c6e;
-    --sage-light: #e8ede4;
-    --warm-brown: #7c5c3e;
-    --warm-brown-light: #f5ede4;
-    --terracotta: #c2714a;
-    --cream: #faf7f2;
-    --dark: #2e2a24;
-    --muted: #7a6f63;
-    --border: rgba(122,92,62,0.15);
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); font-size: 16px; line-height: 1.7; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>A Joint Effort Mobile Physiotherapy | Warm, Professional Mobile Physio</title>
+  <meta name="description" content="Mobile physiotherapy in Western Brisbane and Ipswich. Home visits for older adults, NDIS participants, rehabilitation, falls prevention, and community-based care." />
+  <style>
+    :root{
+      --bg:#f6f1ea;
+      --bg-soft:#fbf8f4;
+      --panel:#fffdfa;
+      --panel-2:#f3ece4;
+      --text:#2f2b27;
+      --muted:#70675f;
+      --line:rgba(72,56,42,.12);
+      --sage:#788873;
+      --sage-soft:#e5ece2;
+      --clay:#c87955;
+      --clay-deep:#9f613f;
+      --sand:#ede2d5;
+      --shadow:0 16px 44px rgba(56,42,32,.10);
+      --shadow-soft:0 10px 24px rgba(56,42,32,.07);
+      --radius:24px;
+      --radius-sm:16px;
+      --container:1180px;
+    }
 
-  nav {
-    position: sticky; top: 0; z-index: 100;
-    background: rgba(250,247,242,0.95); backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border);
-    padding: 0 2rem;
-    display: flex; align-items: center; justify-content: space-between; height: 64px;
-  }
-  .nav-logo { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; color: var(--warm-brown); letter-spacing: -0.01em; }
-  .nav-logo span { color: var(--terracotta); font-style: italic; }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { text-decoration: none; color: var(--muted); font-size: 0.875rem; font-weight: 500; transition: color 0.2s; }
-  .nav-links a:hover { color: var(--terracotta); }
-  .nav-cta { background: var(--terracotta); color: white; padding: 0.5rem 1.25rem; border-radius: 100px; font-size: 0.875rem; font-weight: 500; text-decoration: none; transition: background 0.2s; }
-  .nav-cta:hover { background: var(--warm-brown); }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at top right, rgba(120,136,115,.08), transparent 28%),
+        radial-gradient(circle at 0% 12%, rgba(200,121,85,.08), transparent 25%),
+        var(--bg);
+      line-height:1.65;
+    }
 
-  /* HERO */
-  .hero-section-wrap {
-    background: linear-gradient(160deg, var(--cream) 60%, var(--warm-brown-light) 100%);
-    position: relative; overflow: hidden;
-  }
-  .hero-section-wrap::before {
-    content: ''; position: absolute; top: -80px; right: -80px;
-    width: 500px; height: 500px; border-radius: 50%;
-    background: var(--sage-light); opacity: 0.4; pointer-events: none;
-  }
-  .hero {
-    min-height: 90vh; display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    padding: 5rem 2rem;
-    max-width: 1100px; margin: 0 auto;
-    gap: 3rem; position: relative; z-index: 1;
-  }
-  .hero-inner { }
-  .hero-badge {
-    display: inline-flex; align-items: center; gap: 6px;
-    background: var(--sage-light); color: var(--sage); border-radius: 100px;
-    padding: 0.3rem 0.9rem; font-size: 0.8rem; font-weight: 500; margin-bottom: 1.5rem;
-  }
-  .hero-badge::before { content: ''; display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--sage); }
-  h1 { font-family: 'Lora', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 600; line-height: 1.15; color: var(--dark); margin-bottom: 1.25rem; }
-  h1 em { color: var(--terracotta); font-style: italic; }
-  .hero-sub { font-size: 1.1rem; color: var(--muted); margin-bottom: 2rem; max-width: 520px; line-height: 1.8; }
-  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; }
-  .btn-primary { background: var(--terracotta); color: white; padding: 0.85rem 2rem; border-radius: 100px; font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
-  .btn-primary:hover { background: var(--warm-brown); transform: translateY(-1px); }
-  .btn-ghost { color: var(--warm-brown); font-size: 0.95rem; font-weight: 500; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; }
-  .btn-ghost:hover { color: var(--terracotta); }
-  .hero-creds { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2.5rem; }
-  .cred-chip {
-    display: inline-flex; align-items: center; gap: 5px;
-    background: white; border: 1px solid var(--border); border-radius: 8px;
-    padding: 0.35rem 0.75rem; font-size: 0.78rem; color: var(--muted); font-weight: 500;
-  }
-  .hero-image-wrap { position: relative; display: flex; justify-content: center; }
-  .hero-image-wrap img {
-    width: 100%; max-width: 440px; height: 520px; object-fit: cover;
-    border-radius: 28px; box-shadow: 0 24px 64px rgba(122,92,62,0.18);
-  }
-  .hero-image-badge {
-    position: absolute; bottom: 24px; left: 0;
-    background: white; border-radius: 14px; padding: 0.75rem 1.1rem;
-    box-shadow: 0 8px 24px rgba(44,42,36,0.12);
-    display: flex; align-items: center; gap: 10px;
-    font-size: 0.85rem; font-weight: 500; color: var(--dark);
-  }
-  .hero-image-badge-dot { width: 10px; height: 10px; border-radius: 50%; background: #5cb85c; flex-shrink: 0; }
+    h1,h2,h3,h4{
+      margin:0;
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing:-.02em;
+      line-height:1.1;
+      color:var(--text);
+    }
 
-  section { padding: 5rem 2rem; }
-  .section-inner { max-width: 900px; margin: 0 auto; }
-  .section-label { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 0.75rem; }
-  h2 { font-family: 'Lora', serif; font-size: clamp(1.75rem, 3.5vw, 2.5rem); font-weight: 600; color: var(--dark); margin-bottom: 1.25rem; line-height: 1.2; }
+    p{margin:0}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
 
-  /* SERVICES */
-  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
-  .service-card {
-    background: white; border: 1px solid var(--border); border-radius: 16px;
-    overflow: hidden; transition: box-shadow 0.2s, transform 0.15s;
-  }
-  .service-card:hover { box-shadow: 0 8px 32px rgba(122,92,62,0.1); transform: translateY(-2px); }
-  .service-card-img { width: 100%; height: 160px; object-fit: cover; display: block; }
-  .service-card-body { padding: 1.25rem 1.5rem 1.5rem; }
-  .service-icon { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 1.3rem; }
-  .icon-sage { background: var(--sage-light); }
-  .icon-terra { background: var(--warm-brown-light); }
-  .service-card h3 { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 600; color: var(--dark); margin-bottom: 0.5rem; }
-  .service-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.6; }
-  .service-rate { display: inline-block; margin-top: 0.75rem; font-size: 0.8rem; font-weight: 500; color: var(--terracotta); background: var(--warm-brown-light); padding: 0.2rem 0.6rem; border-radius: 6px; }
+    .container{
+      width:min(var(--container), calc(100% - 32px));
+      margin:0 auto;
+    }
 
-  /* TRUST STRIP */
-  .trust-strip { background: var(--dark); padding: 3rem 2rem; }
-  .trust-strip-inner {
-    max-width: 900px; margin: 0 auto;
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 2rem; text-align: center;
-  }
-  .trust-num { font-family: 'Lora', serif; font-size: 2.2rem; font-weight: 600; color: var(--terracotta); }
-  .trust-label { font-size: 0.85rem; color: rgba(255,255,255,0.55); margin-top: 0.25rem; }
+    .site-shell{
+      padding:16px 0 28px;
+    }
 
-  /* ABOUT */
-  .about-section { background: var(--warm-brown-light); }
-  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 1rem; }
-  @media (max-width: 640px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
-  .about-text {
-    max-width: 760px;
-  }
+    .topbar{
+      position:sticky;
+      top:14px;
+      z-index:50;
+      margin:0 auto 18px;
+      width:min(calc(var(--container) - 48px), calc(100% - 24px));
+      background:rgba(255,253,250,.84);
+      backdrop-filter:blur(14px);
+      border:1px solid rgba(72,56,42,.08);
+      box-shadow:var(--shadow-soft);
+      border-radius:999px;
+    }
 
+    .nav{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      padding:10px 14px 10px 22px;
+    }
 
-  .about-panel {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 24px;
-    padding: 1.5rem;
-    box-shadow: 0 16px 40px rgba(122,92,62,0.08);
-  }
-  .about-panel-top {
-    background: linear-gradient(145deg, var(--sage-light) 0%, var(--warm-brown-light) 100%);
-    border-radius: 18px;
-    padding: 1.35rem;
-    margin-bottom: 1rem;
-  }
-  .about-panel-kicker {
-    display: inline-block;
-    background: rgba(255,255,255,0.8);
-    color: var(--warm-brown);
-    border-radius: 100px;
-    padding: 0.28rem 0.7rem;
-    font-size: 0.76rem;
-    font-weight: 600;
-    margin-bottom: 0.85rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-  }
-  .about-panel-top h3 {
-    font-family: 'Lora', serif;
-    font-size: 1.5rem;
-    line-height: 1.2;
-    color: var(--dark);
-    margin-bottom: 0.55rem;
-  }
-  .about-panel-top p {
-    color: var(--muted);
-    font-size: 0.92rem;
-    line-height: 1.65;
-  }
-  .about-panel-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.85rem;
-  }
-  .about-mini-card {
-    background: var(--cream);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 1rem;
-  }
-  .about-mini-icon {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    background: var(--warm-brown-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.15rem;
-    margin-bottom: 0.7rem;
-  }
-  .about-mini-card h4 {
-    font-family: 'Lora', serif;
-    font-size: 1rem;
-    line-height: 1.25;
-    margin-bottom: 0.35rem;
-    color: var(--dark);
-  }
-  .about-mini-card p {
-    color: var(--muted);
-    font-size: 0.84rem;
-    line-height: 1.55;
-    margin-bottom: 0;
-  }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
 
-  .about-text p { color: var(--muted); margin-bottom: 1rem; }
-  .quals { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1.5rem; }
-  .qual-item { display: flex; align-items: center; gap: 8px; font-size: 0.875rem; color: var(--dark); font-weight: 500; }
-  .qual-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--terracotta); flex-shrink: 0; }
+    .brand-mark{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      background:linear-gradient(145deg, var(--sage-soft), var(--sand));
+      display:grid;
+      place-items:center;
+      color:var(--clay-deep);
+      font-weight:700;
+      box-shadow:inset 0 0 0 1px rgba(72,56,42,.06);
+      flex:0 0 auto;
+    }
 
-  /* AREAS */
-  .area-chips { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 1rem; }
-  .area-chip { background: white; border: 1px solid var(--border); border-radius: 100px; padding: 0.4rem 1rem; font-size: 0.875rem; color: var(--muted); }
+    .brand-copy{
+      min-width:0;
+    }
 
-  /* BOOKING */
-  .booking-section { background: var(--sage-light); }
-  .booking-card { background: white; border-radius: 20px; padding: 2.5rem; border: 1px solid var(--border); max-width: 560px; margin: 2rem auto 0; text-align: center; }
-  .booking-card h3 { font-family: 'Lora', serif; font-size: 1.5rem; margin-bottom: 0.75rem; color: var(--dark); }
-  .booking-card p { color: var(--muted); margin-bottom: 1.75rem; }
-  .booking-steps { display: flex; gap: 1rem; justify-content: center; margin-bottom: 2rem; flex-wrap: wrap; }
-  .bstep { text-align: center; font-size: 0.8rem; color: var(--muted); }
-  .bstep-num { width: 32px; height: 32px; border-radius: 50%; background: var(--warm-brown-light); color: var(--warm-brown); font-weight: 500; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 0.9rem; }
-  .booking-divider { width: 32px; height: 1px; background: var(--border); align-self: center; flex-shrink: 0; }
+    .brand-title{
+      font-size:1.02rem;
+      font-weight:700;
+      letter-spacing:-.02em;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
 
-  /* CONTACT */
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2rem; }
-  @media (max-width: 640px) { .contact-grid { grid-template-columns: 1fr; } }
-  .contact-item { display: flex; gap: 12px; align-items: flex-start; }
-  .contact-icon { width: 40px; height: 40px; border-radius: 10px; background: var(--warm-brown-light); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .brand-sub{
+      font-size:.77rem;
+      color:var(--muted);
+      margin-top:2px;
+    }
 
-  footer { background: var(--dark); color: rgba(255,255,255,0.5); padding: 2.5rem 2rem; text-align: center; font-size: 0.8rem; }
-  footer strong { color: rgba(255,255,255,0.85); }
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:22px;
+      color:var(--muted);
+      font-size:.94rem;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
 
-  @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; }
-    .hero-image-wrap { display: none; }
-  }
-  @media (max-width: 640px) {
-    nav .nav-links { display: none; }
-    .hero { padding: 3rem 1.25rem; }
-    section { padding: 3rem 1.25rem; }
-  }
-</style>
+    .nav-links a:hover{color:var(--clay-deep)}
+
+    .nav-actions{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex:0 0 auto;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      border-radius:999px;
+      padding:13px 18px;
+      font-weight:650;
+      transition:.2s ease;
+      border:1px solid transparent;
+      cursor:pointer;
+    }
+
+    .btn-primary{
+      background:linear-gradient(180deg, var(--clay), var(--clay-deep));
+      color:white;
+      box-shadow:0 10px 24px rgba(159,97,63,.22);
+    }
+
+    .btn-primary:hover{transform:translateY(-1px)}
+    .btn-soft{
+      background:rgba(255,255,255,.72);
+      border-color:var(--line);
+      color:var(--text);
+    }
+    .btn-soft:hover{background:white}
+
+    .hero{
+      position:relative;
+      overflow:hidden;
+      background:linear-gradient(155deg, rgba(255,253,250,.9), rgba(243,236,228,.95));
+      border:1px solid rgba(72,56,42,.08);
+      box-shadow:var(--shadow);
+      border-radius:36px;
+      padding: clamp(32px, 5vw, 58px);
+    }
+
+    .hero::before,
+    .hero::after{
+      content:"";
+      position:absolute;
+      border-radius:999px;
+      pointer-events:none;
+    }
+
+    .hero::before{
+      width:320px;height:320px;
+      right:-90px;top:-110px;
+      background:radial-gradient(circle, rgba(120,136,115,.20), rgba(120,136,115,0));
+    }
+
+    .hero::after{
+      width:240px;height:240px;
+      left:-90px;bottom:-110px;
+      background:radial-gradient(circle, rgba(200,121,85,.14), rgba(200,121,85,0));
+    }
+
+    .hero-grid{
+      position:relative;
+      z-index:1;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:28px;
+      align-items:center;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(72,56,42,.08);
+      color:var(--sage);
+      border-radius:999px;
+      padding:8px 12px;
+      font-size:.82rem;
+      font-weight:700;
+      margin-bottom:18px;
+    }
+
+    .eyebrow-dot{
+      width:8px;height:8px;border-radius:50%;background:var(--sage);
+    }
+
+    .hero h1{
+      font-size:clamp(2.45rem, 6vw, 4.7rem);
+      max-width:11.5ch;
+      margin-bottom:16px;
+    }
+
+    .hero h1 .accent{color:var(--clay-deep); font-style:italic}
+    .hero-lead{
+      font-size:1.08rem;
+      color:var(--muted);
+      max-width:62ch;
+      margin-bottom:22px;
+    }
+
+    .hero-points{
+      display:grid;
+      gap:10px;
+      margin:0 0 28px;
+    }
+
+    .hero-point{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      color:#4c433c;
+      font-size:.97rem;
+    }
+
+    .hero-point i{
+      width:22px;height:22px;border-radius:999px;
+      background:var(--sage-soft);
+      color:var(--sage);
+      display:grid;place-items:center;
+      font-style:normal;
+      font-size:.78rem;
+      font-weight:800;
+      flex:0 0 auto;
+      margin-top:2px;
+    }
+
+    .hero-actions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-bottom:28px;
+    }
+
+    .hero-cred-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border-radius:999px;
+      padding:9px 12px;
+      background:rgba(255,255,255,.68);
+      border:1px solid rgba(72,56,42,.08);
+      color:#544b43;
+      font-size:.83rem;
+      font-weight:650;
+    }
+
+    .hero-card{
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(72,56,42,.08);
+      border-radius:28px;
+      box-shadow:var(--shadow-soft);
+      padding:18px;
+    }
+
+    .hero-visual{
+      display:grid;
+      gap:14px;
+    }
+
+    .welcome-panel{
+      padding:22px;
+      border-radius:26px;
+      background:
+        linear-gradient(150deg, rgba(229,236,226,.95), rgba(255,255,255,.94)),
+        var(--panel);
+      border:1px solid rgba(72,56,42,.08);
+      min-height:270px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .welcome-panel::before{
+      content:"";
+      position:absolute;
+      right:-25px;
+      bottom:-35px;
+      width:170px;height:170px;
+      border-radius:32px;
+      background:linear-gradient(145deg, rgba(200,121,85,.12), rgba(120,136,115,.12));
+      transform:rotate(16deg);
+    }
+
+    .mini-label{
+      display:inline-block;
+      font-size:.76rem;
+      color:var(--clay-deep);
+      background:rgba(255,255,255,.8);
+      border:1px solid rgba(72,56,42,.06);
+      padding:7px 10px;
+      border-radius:999px;
+      font-weight:700;
+      margin-bottom:16px;
+      position:relative;
+      z-index:1;
+    }
+
+    .welcome-title{
+      font-size:1.8rem;
+      max-width:12ch;
+      margin-bottom:12px;
+      position:relative;
+      z-index:1;
+    }
+
+    .welcome-copy{
+      color:var(--muted);
+      max-width:34ch;
+      position:relative;
+      z-index:1;
+    }
+
+    .hero-stats{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:12px;
+    }
+
+    .stat{
+      background:var(--panel);
+      border:1px solid rgba(72,56,42,.08);
+      border-radius:22px;
+      padding:18px 16px;
+      text-align:center;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .stat strong{
+      display:block;
+      font-size:1.5rem;
+      font-family: Georgia, "Times New Roman", serif;
+      margin-bottom:3px;
+    }
+
+    .stat span{
+      color:var(--muted);
+      font-size:.82rem;
+    }
+
+    .section{
+      padding:72px 0;
+    }
+
+    .section-top{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:20px;
+      margin-bottom:28px;
+    }
+
+    .section-kicker{
+      color:var(--clay-deep);
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:.76rem;
+      margin-bottom:10px;
+    }
+
+    .section h2{
+      font-size:clamp(1.9rem, 4vw, 3rem);
+      max-width:13ch;
+    }
+
+    .section-intro{
+      color:var(--muted);
+      max-width:54ch;
+    }
+
+    .grid-3{
+      display:grid;
+      grid-template-columns:repeat(3, 1fr);
+      gap:18px;
+    }
+
+    .grid-2{
+      display:grid;
+      grid-template-columns:repeat(2, 1fr);
+      gap:18px;
+    }
+
+    .card{
+      background:var(--panel);
+      border:1px solid rgba(72,56,42,.08);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow-soft);
+    }
+
+    .service-card{
+      padding:22px;
+      position:relative;
+      overflow:hidden;
+      min-height:238px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,250,246,.94));
+    }
+
+    .service-card::after{
+      content:"";
+      position:absolute;
+      right:-12px; top:-22px;
+      width:112px;height:112px;
+      border-radius:30px;
+      background:linear-gradient(145deg, rgba(120,136,115,.10), rgba(200,121,85,.08));
+      transform:rotate(12deg);
+    }
+
+    .icon{
+      width:54px;height:54px;
+      border-radius:18px;
+      display:grid;place-items:center;
+      font-size:1.35rem;
+      margin-bottom:18px;
+      background:linear-gradient(145deg, var(--sage-soft), #fff);
+      border:1px solid rgba(72,56,42,.06);
+      position:relative;
+      z-index:1;
+    }
+
+    .service-card h3{
+      font-size:1.38rem;
+      margin-bottom:10px;
+      position:relative;
+      z-index:1;
+    }
+
+    .service-card p{
+      color:var(--muted);
+      position:relative;
+      z-index:1;
+    }
+
+    .service-meta{
+      margin-top:14px;
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      position:relative;
+      z-index:1;
+    }
+
+    .tag{
+      background:var(--panel-2);
+      border:1px solid rgba(72,56,42,.06);
+      color:#5f554c;
+      border-radius:999px;
+      padding:7px 10px;
+      font-size:.78rem;
+      font-weight:650;
+    }
+
+    .highlight{
+      background:
+        linear-gradient(145deg, rgba(229,236,226,.76), rgba(255,255,255,.90));
+      padding:28px;
+      border-radius:32px;
+      border:1px solid rgba(72,56,42,.08);
+      box-shadow:var(--shadow);
+    }
+
+    .highlight-grid{
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:22px;
+      align-items:stretch;
+    }
+
+    .check-list{
+      display:grid;
+      gap:14px;
+      margin-top:18px;
+    }
+
+    .check{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(72,56,42,.07);
+      border-radius:18px;
+      padding:14px 14px 13px;
+    }
+
+    .check i{
+      width:24px;height:24px;border-radius:999px;
+      display:grid;place-items:center;
+      background:var(--sage-soft);
+      color:var(--sage);
+      font-style:normal;
+      font-size:.82rem;
+      font-weight:800;
+      flex:0 0 auto;
+      margin-top:1px;
+    }
+
+    .check strong{
+      display:block;
+      margin-bottom:3px;
+      font-size:.98rem;
+    }
+
+    .check p{
+      color:var(--muted);
+      font-size:.92rem;
+    }
+
+    .warm-panel{
+      background:linear-gradient(145deg, rgba(200,121,85,.10), rgba(255,255,255,.78));
+      border:1px solid rgba(72,56,42,.08);
+      border-radius:28px;
+      padding:24px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .quote{
+      font-size:1.2rem;
+      font-family: Georgia, "Times New Roman", serif;
+      line-height:1.4;
+    }
+
+    .about-grid{
+      display:grid;
+      grid-template-columns: .92fr 1.08fr;
+      gap:20px;
+      align-items:stretch;
+    }
+
+    .about-panel{
+      padding:26px;
+      position:relative;
+      overflow:hidden;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.88), rgba(243,236,228,.88));
+    }
+
+    .about-panel::before{
+      content:"";
+      position:absolute;
+      inset:auto -20px -30px auto;
+      width:180px;height:180px;
+      background:radial-gradient(circle, rgba(120,136,115,.15), rgba(120,136,115,0));
+      border-radius:50%;
+    }
+
+    .about-panel h3{
+      font-size:1.55rem;
+      margin-bottom:10px;
+      position:relative;
+      z-index:1;
+    }
+
+    .about-panel p{
+      color:var(--muted);
+      position:relative;
+      z-index:1;
+    }
+
+    .credentials{
+      display:grid;
+      gap:12px;
+      margin-top:22px;
+      position:relative;
+      z-index:1;
+    }
+
+    .credential{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:13px 14px;
+      background:rgba(255,255,255,.72);
+      border:1px solid rgba(72,56,42,.07);
+      border-radius:18px;
+    }
+
+    .credential i{
+      width:24px;height:24px;border-radius:999px;
+      display:grid;place-items:center;
+      background:var(--panel-2);
+      color:var(--clay-deep);
+      font-style:normal;
+      font-size:.84rem;
+      font-weight:800;
+      flex:0 0 auto;
+      margin-top:1px;
+    }
+
+    .steps{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:18px;
+    }
+
+    .step{
+      padding:22px;
+    }
+
+    .step-num{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      background:var(--panel-2);
+      color:var(--clay-deep);
+      font-weight:800;
+      margin-bottom:16px;
+    }
+
+    .step h3{font-size:1.22rem;margin-bottom:8px}
+    .step p{color:var(--muted)}
+
+    .areas-wrap{
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:18px;
+    }
+
+    .area-card{
+      padding:24px;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:18px;
+    }
+
+    .chip{
+      border-radius:999px;
+      padding:10px 14px;
+      background:var(--panel-2);
+      border:1px solid rgba(72,56,42,.06);
+      color:#574e46;
+      font-size:.88rem;
+      font-weight:650;
+    }
+
+    .map-panel{
+      padding:24px;
+      background:
+        linear-gradient(145deg, rgba(229,236,226,.80), rgba(255,255,255,.92));
+      position:relative;
+      overflow:hidden;
+    }
+
+    .map-box{
+      margin-top:18px;
+      min-height:280px;
+      border-radius:26px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.25), rgba(255,255,255,.10)),
+        repeating-linear-gradient(0deg, rgba(120,136,115,.08) 0 1px, transparent 1px 48px),
+        repeating-linear-gradient(90deg, rgba(120,136,115,.08) 0 1px, transparent 1px 48px),
+        radial-gradient(circle at 62% 52%, rgba(200,121,85,.24), rgba(200,121,85,0) 24%),
+        radial-gradient(circle at 39% 59%, rgba(120,136,115,.18), rgba(120,136,115,0) 18%),
+        #f8f5ef;
+      border:1px solid rgba(72,56,42,.08);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .route{
+      position:absolute;
+      inset:0;
+    }
+
+    .route svg{width:100%;height:100%}
+    .pin{
+      position:absolute;
+      width:22px;height:22px;border-radius:50%;
+      background:linear-gradient(180deg, var(--clay), var(--clay-deep));
+      box-shadow:0 8px 16px rgba(159,97,63,.25);
+      border:3px solid rgba(255,255,255,.88);
+    }
+
+    .pin.one{left:38%; top:56%}
+    .pin.two{left:61%; top:42%}
+    .pin.three{left:48%; top:35%}
+
+    .faq-list{
+      display:grid;
+      gap:14px;
+    }
+
+    details.faq{
+      background:var(--panel);
+      border:1px solid rgba(72,56,42,.08);
+      border-radius:20px;
+      padding:18px 20px;
+      box-shadow:var(--shadow-soft);
+    }
+
+    details.faq summary{
+      list-style:none;
+      cursor:pointer;
+      font-weight:750;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:16px;
+    }
+    details.faq summary::-webkit-details-marker{display:none}
+    details.faq p{color:var(--muted); margin-top:12px}
+
+    .contact-grid{
+      display:grid;
+      grid-template-columns:1.04fr .96fr;
+      gap:18px;
+    }
+
+    .contact-card{
+      padding:26px;
+    }
+
+    .contact-list{
+      display:grid;
+      gap:12px;
+      margin-top:18px;
+    }
+
+    .contact-item{
+      display:flex;
+      gap:14px;
+      align-items:flex-start;
+      padding:14px 16px;
+      background:var(--bg-soft);
+      border:1px solid rgba(72,56,42,.07);
+      border-radius:18px;
+    }
+
+    .contact-item i{
+      width:42px;height:42px;border-radius:14px;
+      display:grid;place-items:center;
+      background:var(--panel-2);
+      flex:0 0 auto;
+      font-style:normal;
+    }
+
+    .contact-item strong{
+      display:block;
+      margin-bottom:4px;
+    }
+
+    .contact-item span,
+    .contact-item a{
+      color:var(--muted);
+    }
+
+    .contact-cta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:20px;
+    }
+
+    .closing{
+      padding:28px;
+      background:
+        linear-gradient(145deg, rgba(200,121,85,.10), rgba(229,236,226,.64));
+      border-radius:28px;
+      border:1px solid rgba(72,56,42,.08);
+      min-height:100%;
+    }
+
+    .closing h3{
+      font-size:1.55rem;
+      margin-bottom:10px;
+    }
+
+    .closing p{
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+
+    .footer{
+      padding:34px 0 8px;
+      color:var(--muted);
+      text-align:center;
+      font-size:.9rem;
+    }
+
+    @media (max-width: 1080px){
+      .hero-grid,
+      .highlight-grid,
+      .about-grid,
+      .areas-wrap,
+      .contact-grid{
+        grid-template-columns:1fr;
+      }
+
+      .section-top{
+        align-items:start;
+        flex-direction:column;
+      }
+
+      .section h2,
+      .hero h1{
+        max-width:none;
+      }
+    }
+
+    @media (max-width: 900px){
+      .grid-3,
+      .steps{
+        grid-template-columns:1fr;
+      }
+      .grid-2{
+        grid-template-columns:1fr;
+      }
+
+      .hero-stats{
+        grid-template-columns:1fr;
+      }
+
+      .nav{
+        min-height:auto;
+        padding:12px;
+      }
+
+      .nav-links{
+        display:none;
+      }
+    }
+
+    @media (max-width: 640px){
+      .site-shell{padding-top:8px}
+      .topbar{top:8px}
+      .hero,
+      .section{
+        padding-top:56px;
+      }
+      .hero{
+        border-radius:28px;
+      }
+      .btn{
+        width:100%;
+      }
+      .hero-actions .btn-soft,
+      .hero-actions .btn-primary{
+        width:100%;
+      }
+      .contact-cta .btn{width:100%}
+    }
+  </style>
 </head>
 <body>
-
-<nav>
-  <div class="nav-logo">A <span>Joint</span> Effort</div>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#areas">Areas</a></li>
-    <li><a href="#booking">Book</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <a href="#booking" class="nav-cta">Book a visit</a>
-</nav>
-
-<!-- HERO -->
-<div class="hero-section-wrap">
-  <div class="hero">
-    <div class="hero-inner">
-      <div class="hero-badge">Mobile Physiotherapy · Western Brisbane & Ipswich</div>
-      <h1>Physio that comes<br>to <em>you</em></h1>
-      <p class="hero-sub">AHPRA-registered physiotherapy delivered at home, in aged care, and in the community across Jindalee, Ipswich, and the western Brisbane corridor.</p>
-      <div class="hero-actions">
-        <a href="#booking" class="btn-primary">Book a home visit</a>
-        <a href="#services" class="btn-ghost">See services →</a>
-      </div>
-      <div class="hero-creds">
-        <span class="cred-chip">✓ AHPRA Registered</span>
-        <span class="cred-chip">✓ NDIS Cleared</span>
-        <span class="cred-chip">✓ Fully Insured</span>
-        <span class="cred-chip">✓ ABN Registered</span>
-      </div>
-    </div>
-    <div class="hero-image-wrap">
-      <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=880&auto=format&fit=crop&q=80" alt="Physiotherapist helping a patient at home">
-      <div class="hero-image-badge">
-        <span class="hero-image-badge-dot"></span>
-        Accepting new patients
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="section-inner">
-    <p class="section-label">What I offer</p>
-    <h2>Services tailored to<br>your needs</h2>
-    <div class="services-grid">
-
-      <div class="service-card">
-        <img class="service-card-img" src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=600&auto=format&fit=crop&q=75" alt="NDIS physiotherapy support">
-        <div class="service-card-body">
-          <div class="service-icon icon-sage">🧠</div>
-          <h3>NDIS Physiotherapy</h3>
-          <p>Supporting participants with disability to build strength, mobility, and independence — in your home or community setting.</p>
-          <span class="service-rate">$193.99 / hr · NDIS Rate</span>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <img class="service-card-img" src="https://images.unsplash.com/photo-1551190822-a9333d879b1f?w=600&auto=format&fit=crop&q=75" alt="Aged care physiotherapy">
-        <div class="service-card-body">
-          <div class="service-icon icon-terra">🏠</div>
-          <h3>Aged Care</h3>
-          <p>Home Care Package and residential facility physio. Falls prevention, mobility, pain management, and restorative care.</p>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <img class="service-card-img" src="https://images.unsplash.com/photo-1666214280391-8ff5bd3c0bf0?w=600&auto=format&fit=crop&q=75" alt="GP referral physiotherapy">
-        <div class="service-card-body">
-          <div class="service-icon icon-sage">🩺</div>
-          <h3>GP Referrals & CDM</h3>
-          <p>Medicare-rebatable sessions via Chronic Disease Management plans. Accepting referrals from GPs in the western Brisbane and Ipswich area.</p>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <img class="service-card-img" src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&auto=format&fit=crop&q=75" alt="Community and private physiotherapy">
-        <div class="service-card-body">
-          <div class="service-icon icon-sage">🏃</div>
-          <h3>Community & Private</h3>
-          <p>Musculoskeletal, neurological, and post-surgical rehab. Home visits for private-paying clients across western Brisbane and Ipswich.</p>
-        </div>
-      </div>
-
-      <div class="service-card">
-        <img class="service-card-img" src="https://images.unsplash.com/photo-1504439468489-c8920d796a29?w=600&auto=format&fit=crop&q=75" alt="Physiotherapy assessments">
-        <div class="service-card-body">
-          <div class="service-icon icon-terra">📋</div>
-          <h3>Assessments</h3>
-          <p>Functional capacity evaluations, home safety assessments, and equipment prescription for NDIS and aged care.</p>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- TRUST STRIP -->
-<div class="trust-strip">
-  <div class="trust-strip-inner">
-    <div class="trust-item">
-      <div class="trust-num">NDIS</div>
-      <div class="trust-label">Worker Screening Cleared</div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-num">AHPRA</div>
-      <div class="trust-label">Registered Physiotherapist</div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-num">100%</div>
-      <div class="trust-label">Mobile — we come to you</div>
-    </div>
-    <div class="trust-item">
-      <div class="trust-num">14+</div>
-      <div class="trust-label">Suburbs served</div>
-    </div>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section id="about" class="about-section">
-  <div class="section-inner">
-    <div class="about-grid">
-      <div class="about-panel">
-        <div class="about-panel-top">
-          <span class="about-panel-kicker">Mobile physio</span>
-          <h3>Home visits with a practical, personal approach</h3>
-          <p>A clean visual panel works better here than a fake stock headshot. It keeps the page professional without implying the photo is you.</p>
-        </div>
-
-        <div class="about-panel-grid">
-          <div class="about-mini-card">
-            <div class="about-mini-icon">🏠</div>
-            <h4>Home-based care</h4>
-            <p>Assessment and treatment in the environment where function and safety matter most.</p>
-          </div>
-
-          <div class="about-mini-card">
-            <div class="about-mini-icon">🧠</div>
-            <h4>NDIS & rehab</h4>
-            <p>Support for mobility, strength, confidence, and meaningful day-to-day progress.</p>
-          </div>
-
-          <div class="about-mini-card">
-            <div class="about-mini-icon">🤝</div>
-            <h4>Referrer friendly</h4>
-            <p>Clear communication for families, support coordinators, GPs, and care teams.</p>
-          </div>
-
-          <div class="about-mini-card">
-            <div class="about-mini-icon">📍</div>
-            <h4>Local coverage</h4>
-            <p>Serving western Brisbane and Ipswich with mobile visits that come to the client.</p>
+  <div class="site-shell">
+    <div class="topbar">
+      <div class="nav">
+        <div class="brand">
+          <div class="brand-mark">AJE</div>
+          <div class="brand-copy">
+            <div class="brand-title">A Joint Effort</div>
+            <div class="brand-sub">Mobile Physiotherapy · Western Brisbane & Ipswich</div>
           </div>
         </div>
-      </div>
 
-      <div class="about-text">
-        <p class="section-label">About Ivan</p>
-        <h2>Physiotherapy as a genuine partnership</h2>
-        <p>I'm Ivan, a physiotherapist based in western Brisbane, and I care deeply about helping people feel supported, understood, and confident in their recovery. I believe physiotherapy works best when there is trust, kindness, and a genuine partnership between therapist and client.</p>
-        <p>I provide mobile physiotherapy for NDIS participants, older adults, and anyone who feels more comfortable receiving care at home. My goal is to make each session practical, encouraging, and centred around what matters most to you, so that progress feels achievable and meaningful.</p>
-        <div class="quals">
-          <div class="qual-item"><span class="qual-dot"></span>AHPRA Registered Physiotherapist</div>
-          <div class="qual-item"><span class="qual-dot"></span>NDIS Worker Screening Cleared (QLD)</div>
-          <div class="qual-item"><span class="qual-dot"></span>Fully insured (professional indemnity & liability)</div>
-          <div class="qual-item"><span class="qual-dot"></span>ABN Registered Sole Trader</div>
-          <div class="qual-item"><span class="qual-dot"></span>Mobile home visits across western Brisbane & Ipswich</div>
+        <div class="nav-links">
+          <a href="#services">Services</a>
+          <a href="#about">About</a>
+          <a href="#areas">Areas</a>
+          <a href="#referrals">Referrals</a>
+          <a href="#contact">Contact</a>
+        </div>
+
+        <div class="nav-actions">
+          <a class="btn btn-soft" href="mailto:ajephysio@gmail.com">Email</a>
+          <a class="btn btn-primary" href="#contact">Book a visit</a>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- AREAS -->
-<section id="areas">
-  <div class="section-inner">
-    <p class="section-label">Where I travel</p>
-    <h2>Serving western Brisbane & Ipswich</h2>
-    <p style="color: var(--muted); max-width: 540px;">I travel across the western Brisbane corridor from Jindalee through to Ipswich and surrounds. Not sure if I cover your suburb? Just ask.</p>
-    <div class="area-chips">
-      <span class="area-chip">Jindalee</span>
-      <span class="area-chip">Mount Ommaney</span>
-      <span class="area-chip">Sinnamon Park</span>
-      <span class="area-chip">Sumner</span>
-      <span class="area-chip">Darra</span>
-      <span class="area-chip">Oxley</span>
-      <span class="area-chip">Corinda</span>
-      <span class="area-chip">Riverview</span>
-      <span class="area-chip">Redbank</span>
-      <span class="area-chip">Goodna</span>
-      <span class="area-chip">Springfield</span>
-      <span class="area-chip">Ipswich</span>
-      <span class="area-chip">Booval</span>
-      <span class="area-chip">Leichhardt</span>
-      <span class="area-chip">+ surrounding suburbs</span>
-    </div>
-  </div>
-</section>
+    <main class="container">
+      <section class="hero" id="top">
+        <div class="hero-grid">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-dot"></span> Warm, professional physiotherapy that comes to you</div>
+            <h1>Helping people move better, feel safer, and recover with <span class="accent">confidence</span> at home.</h1>
+            <p class="hero-lead">Mobile physiotherapy across western Brisbane and Ipswich for older adults, NDIS participants, rehabilitation at home, and private clients who want practical care in a familiar environment.</p>
 
-<!-- BOOKING -->
-<section id="booking" class="booking-section">
-  <div class="section-inner" style="text-align: center;">
-    <p class="section-label">Get started</p>
-    <h2>Book your home visit</h2>
-    <div class="booking-card">
-      <h3>Ready when you are</h3>
-      <p>Book online via Halaxy — secure, simple, and available anytime. New patients welcome.</p>
-      <div class="booking-steps">
-        <div class="bstep"><div class="bstep-num">1</div>Choose a time</div>
-        <div class="booking-divider"></div>
-        <div class="bstep"><div class="bstep-num">2</div>Fill in details</div>
-        <div class="booking-divider"></div>
-        <div class="bstep"><div class="bstep-num">3</div>Ivan comes to you</div>
-      </div>
-      <!-- Replace the href below with your actual Halaxy booking link -->
-      <a href="https://www.halaxy.com" target="_blank" class="btn-primary" style="display: inline-block; width: 100%; text-align: center; padding: 1rem;">Book online via Halaxy →</a>
-      <p style="margin-top: 1rem; font-size: 0.8rem; color: var(--muted);">Prefer to call or email? See contact details below.</p>
-    </div>
-  </div>
-</section>
+            <div class="hero-points">
+              <div class="hero-point"><i>✓</i><span>Clear, encouraging treatment focused on strength, balance, mobility, pain, and everyday function.</span></div>
+              <div class="hero-point"><i>✓</i><span>Support for families, carers, GPs, support coordinators, and care teams who value good communication.</span></div>
+              <div class="hero-point"><i>✓</i><span>Home visits that feel personal and calm, while still clinically grounded and goal focused.</span></div>
+            </div>
 
-<!-- CONTACT -->
-<section id="contact">
-  <div class="section-inner">
-    <p class="section-label">Get in touch</p>
-    <h2>Contact Ivan</h2>
-    <div class="contact-grid">
-      <div class="contact-item">
-        <div class="contact-icon">📍</div>
-        <div>
-          <p style="font-weight: 500; margin-bottom: 0.25rem;">Service area</p>
-          <p style="color: var(--muted); font-size: 0.9rem;">Jindalee to Ipswich corridor<br>Western Brisbane & surrounds</p>
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="#contact">Book a home visit</a>
+              <a class="btn btn-soft" href="#referrals">Refer a client</a>
+            </div>
+
+            <div class="hero-cred-row">
+              <span class="pill">AHPRA Registered</span>
+              <span class="pill">NDIS Worker Screening Cleared</span>
+              <span class="pill">Fully Insured</span>
+              <span class="pill">Home & community visits</span>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <div class="welcome-panel">
+              <div class="mini-label">What you can expect</div>
+              <div class="welcome-title">A calm, thoughtful approach to physio at home.</div>
+              <div class="welcome-copy">The website now avoids fake-looking stock headshots and instead uses a clean, premium layout that feels more trustworthy. That is the right move for healthcare.</div>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat">
+                <strong>Home</strong>
+                <span>Visits designed around real-life function</span>
+              </div>
+              <div class="stat">
+                <strong>NDIS</strong>
+                <span>Supportive, practical therapy input</span>
+              </div>
+              <div class="stat">
+                <strong>Clear</strong>
+                <span>Communication with clients and referrers</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">📧</div>
-        <div>
-          <p style="font-weight: 500; margin-bottom: 0.25rem;">Email</p>
-          <p style="color: var(--muted); font-size: 0.9rem;"><a href="mailto:ajephysio@gmail.com">ajephysio@gmail.com</a></p>
+      </section>
+
+      <section class="section" id="services">
+        <div class="section-top">
+          <div>
+            <div class="section-kicker">Services</div>
+            <h2>Care that is warm in tone and precise in delivery.</h2>
+          </div>
+          <p class="section-intro">The structure below makes your offer easier to understand. It speaks to clients, families, and referrers without sounding vague or overloaded.</p>
         </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">📱</div>
-        <div>
-          <p style="font-weight: 500; margin-bottom: 0.25rem;">Phone</p>
-          <p style="color: var(--muted); font-size: 0.9rem;">0419 213 658</p>
+
+        <div class="grid-3">
+          <article class="card service-card">
+            <div class="icon">🏠</div>
+            <h3>Older adults & aged care</h3>
+            <p>Home-based physiotherapy focused on balance, falls prevention, walking confidence, strength, pain management, and maintaining independence.</p>
+            <div class="service-meta">
+              <span class="tag">Falls prevention</span>
+              <span class="tag">Mobility</span>
+              <span class="tag">Strength</span>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <div class="icon">🧩</div>
+            <h3>NDIS & disability support</h3>
+            <p>Physiotherapy to support participation, function, mobility, exercise capacity, and day-to-day confidence for NDIS participants.</p>
+            <div class="service-meta">
+              <span class="tag">Functional goals</span>
+              <span class="tag">Community access</span>
+              <span class="tag">Home visits</span>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <div class="icon">↺</div>
+            <h3>Rehabilitation at home</h3>
+            <p>Support after illness, hospitalisation, surgery, injury, or deconditioning, with treatment plans that fit the home environment and the person in front of you.</p>
+            <div class="service-meta">
+              <span class="tag">Post-hospital</span>
+              <span class="tag">Reconditioning</span>
+              <span class="tag">Recovery</span>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <div class="icon">⚖️</div>
+            <h3>Balance & mobility review</h3>
+            <p>Targeted assessment of gait, transfers, steadiness, confidence, and movement strategies to help reduce risk and improve daily function.</p>
+            <div class="service-meta">
+              <span class="tag">Walking</span>
+              <span class="tag">Transfers</span>
+              <span class="tag">Confidence</span>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <div class="icon">📋</div>
+            <h3>Assessments & practical advice</h3>
+            <p>Functional review, exercise planning, home safety input, and recommendations that are actually usable rather than generic.</p>
+            <div class="service-meta">
+              <span class="tag">Home safety</span>
+              <span class="tag">Exercise plans</span>
+              <span class="tag">Advice</span>
+            </div>
+          </article>
+
+          <article class="card service-card">
+            <div class="icon">🤝</div>
+            <h3>GP, private & community referrals</h3>
+            <p>A straightforward option for GPs, care coordinators, support coordinators, families, and private clients looking for mobile physiotherapy.</p>
+            <div class="service-meta">
+              <span class="tag">Referrals welcome</span>
+              <span class="tag">Private clients</span>
+              <span class="tag">Community care</span>
+            </div>
+          </article>
         </div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-icon">⏰</div>
-        <div>
-          <p style="font-weight: 500; margin-bottom: 0.25rem;">Hours</p>
-          <p style="color: var(--muted); font-size: 0.9rem;">Wed & Fri: 8am–6pm<br>Sat: by appointment only</p>
+      </section>
+
+      <section class="section">
+        <div class="highlight">
+          <div class="highlight-grid">
+            <div>
+              <div class="section-kicker">Why A Joint Effort</div>
+              <h2 style="max-width:none; margin-bottom:10px;">Professional without feeling cold. Supportive without feeling vague.</h2>
+              <p class="section-intro">That balance matters. A health website should feel human and reassuring, but it still needs to project competence, structure, and trust.</p>
+
+              <div class="check-list">
+                <div class="check">
+                  <i>✓</i>
+                  <div>
+                    <strong>Person-centred sessions</strong>
+                    <p>Care built around the person's goals, pace, environment, and confidence level.</p>
+                  </div>
+                </div>
+                <div class="check">
+                  <i>✓</i>
+                  <div>
+                    <strong>Clear communication</strong>
+                    <p>Easy for families and referrers to understand the plan, progress, and next steps.</p>
+                  </div>
+                </div>
+                <div class="check">
+                  <i>✓</i>
+                  <div>
+                    <strong>Useful, practical treatment</strong>
+                    <p>Focus on function, not just symptoms or generic exercise sheets.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="warm-panel">
+              <div>
+                <div class="mini-label">A better brand feel</div>
+                <div class="quote">“Recovery works best when people feel supported, respected, and clear on what they are working toward.”</div>
+              </div>
+              <p>This panel gives you a warm emotional note without drifting into cliché. It helps the brand feel personal while keeping the page clean and credible.</p>
+              <a class="btn btn-soft" href="#about">Meet Ivan</a>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section class="section" id="about">
+        <div class="section-top">
+          <div>
+            <div class="section-kicker">About Ivan</div>
+            <h2>Thoughtful physiotherapy with a real-world, home-based focus.</h2>
+          </div>
+          <p class="section-intro">This section keeps things personal, but avoids stock photos that can make a solo healthcare site feel fake or generic.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="card about-panel">
+            <div class="mini-label">What matters here</div>
+            <h3>Warm care, clear plans, and steady progress.</h3>
+            <p>I'm Ivan, a physiotherapist based in western Brisbane. I take a calm, practical approach to care because people tend to do better when they feel comfortable, understood, and confident in the plan.</p>
+
+            <div class="credentials">
+              <div class="credential"><i>✓</i><div><strong>AHPRA Registered Physiotherapist</strong></div></div>
+              <div class="credential"><i>✓</i><div><strong>NDIS Worker Screening Cleared</strong></div></div>
+              <div class="credential"><i>✓</i><div><strong>Fully insured for professional practice</strong></div></div>
+              <div class="credential"><i>✓</i><div><strong>Mobile service across western Brisbane and Ipswich</strong></div></div>
+            </div>
+          </div>
+
+          <div class="card about-panel">
+            <div class="mini-label">Approach</div>
+            <h3>Care that fits real life, not just a clinic template.</h3>
+            <p>I provide mobile physiotherapy for older adults, NDIS participants, and private clients who prefer treatment in the comfort of home. My aim is to make each visit practical, encouraging, and genuinely useful for daily life.</p>
+            <p style="margin-top:14px;">That means focusing on the things that matter most to the person: moving safely, building confidence, improving strength and mobility, managing pain, and making progress that feels achievable.</p>
+            <p style="margin-top:14px;">The tone of the site now matches that philosophy better: professional, uncluttered, and welcoming.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-top">
+          <div>
+            <div class="section-kicker">How it works</div>
+            <h2>A simple path from enquiry to treatment.</h2>
+          </div>
+          <p class="section-intro">This is useful because visitors should not have to guess what happens next.</p>
+        </div>
+
+        <div class="steps">
+          <div class="card step">
+            <div class="step-num">1</div>
+            <h3>Get in touch</h3>
+            <p>Send an enquiry by phone or email with the suburb, what support is needed, and whether the referral is private, GP, NDIS, or community based.</p>
+          </div>
+
+          <div class="card step">
+            <div class="step-num">2</div>
+            <h3>Confirm suitability</h3>
+            <p>Review the details, confirm whether the location is covered, and discuss the most appropriate next step for the client or family.</p>
+          </div>
+
+          <div class="card step">
+            <div class="step-num">3</div>
+            <h3>Begin home visits</h3>
+            <p>Assessment and treatment start in the home environment, with a plan that is clear, realistic, and tailored to the person's goals.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="areas">
+        <div class="areas-wrap">
+          <div class="card area-card">
+            <div class="section-kicker">Service area</div>
+            <h2 style="max-width:none; margin-bottom:10px;">Western Brisbane & Ipswich</h2>
+            <p class="section-intro">The old suburb list was harder to scan. This version is cleaner and looks more intentional.</p>
+            <div class="chips">
+              <span class="chip">Jindalee</span>
+              <span class="chip">Mount Ommaney</span>
+              <span class="chip">Sinnamon Park</span>
+              <span class="chip">Sumner</span>
+              <span class="chip">Oxley</span>
+              <span class="chip">Corinda</span>
+              <span class="chip">Kenmore</span>
+              <span class="chip">Indooroopilly</span>
+              <span class="chip">Goodna</span>
+              <span class="chip">Redbank</span>
+              <span class="chip">Springfield</span>
+              <span class="chip">Ipswich</span>
+            </div>
+            <p style="margin-top:18px; color:var(--muted);">Not sure if your suburb is covered? Get in touch and ask. That is better than making people guess.</p>
+          </div>
+
+          <div class="card map-panel">
+            <div class="section-kicker">Coverage</div>
+            <h2 style="max-width:none; margin-bottom:8px;">Mobile care where it matters most</h2>
+            <p class="section-intro">A clean visual panel keeps this section attractive without relying on a stock map screenshot.</p>
+
+            <div class="map-box">
+              <div class="route">
+                <svg viewBox="0 0 600 420" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M80 280 C160 220, 230 330, 300 260 S460 140, 540 190" fill="none" stroke="rgba(120,136,115,.40)" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M90 120 C140 150, 210 120, 260 170 S370 290, 510 300" fill="none" stroke="rgba(200,121,85,.30)" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span class="pin one"></span>
+              <span class="pin two"></span>
+              <span class="pin three"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="referrals">
+        <div class="section-top">
+          <div>
+            <div class="section-kicker">Referrals</div>
+            <h2>A clearer pathway for GPs, support coordinators, and care teams.</h2>
+          </div>
+          <p class="section-intro">This was one of the weaker parts before. Referrers need a direct route, not just a patient-facing booking button.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card service-card" style="min-height:auto;">
+            <div class="icon">👩‍⚕️</div>
+            <h3>Who can refer</h3>
+            <p>GPs, support coordinators, care coordinators, case managers, family members, and private clients can all get in touch to discuss suitability and next steps.</p>
+          </div>
+
+          <div class="card service-card" style="min-height:auto;">
+            <div class="icon">✉️</div>
+            <h3>What to include</h3>
+            <p>Share the client's suburb, referral type, the main concerns or goals, and any important background information so the response can be quicker and more useful.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-top">
+          <div>
+            <div class="section-kicker">FAQ</div>
+            <h2>Questions people usually want answered quickly.</h2>
+          </div>
+          <p class="section-intro">This improves trust and reduces friction before people contact you.</p>
+        </div>
+
+        <div class="faq-list">
+          <details class="faq" open>
+            <summary><span>Do you provide home visits only?</span><span>＋</span></summary>
+            <p>Yes. A Joint Effort is designed around mobile physiotherapy, with treatment delivered in the home or community setting.</p>
+          </details>
+
+          <details class="faq">
+            <summary><span>Do you see NDIS participants?</span><span>＋</span></summary>
+            <p>Yes. The service is suitable for NDIS participants who need support with mobility, exercise, function, rehabilitation, or day-to-day confidence.</p>
+          </details>
+
+          <details class="faq">
+            <summary><span>Can family members or support coordinators enquire on someone else's behalf?</span><span>＋</span></summary>
+            <p>Yes. That is common, and it helps to include the suburb, goals, and brief background when making the enquiry.</p>
+          </details>
+
+          <details class="faq">
+            <summary><span>What if I am just outside your main service area?</span><span>＋</span></summary>
+            <p>It is still worth asking. Coverage can sometimes be confirmed depending on location, capacity, and travel practicality.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section" id="contact">
+        <div class="contact-grid">
+          <div class="card contact-card">
+            <div class="section-kicker">Contact</div>
+            <h2 style="max-width:none; margin-bottom:8px;">Ready to book or make a referral?</h2>
+            <p class="section-intro">This section now looks cleaner and gives people a direct next step.</p>
+
+            <div class="contact-list">
+              <div class="contact-item">
+                <i>📧</i>
+                <div>
+                  <strong>Email</strong>
+                  <a href="mailto:ajephysio@gmail.com">ajephysio@gmail.com</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <i>📱</i>
+                <div>
+                  <strong>Phone</strong>
+                  <a href="tel:0419213658">0419 213 658</a>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <i>📍</i>
+                <div>
+                  <strong>Service area</strong>
+                  <span>Western Brisbane and Ipswich</span>
+                </div>
+              </div>
+
+              <div class="contact-item">
+                <i>⏰</i>
+                <div>
+                  <strong>Hours</strong>
+                  <span>Wed & Fri: 8am–6pm · Sat by appointment</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-cta">
+              <a class="btn btn-primary" href="mailto:ajephysio@gmail.com?subject=Physiotherapy%20Enquiry">Email an enquiry</a>
+              <a class="btn btn-soft" href="tel:0419213658">Call now</a>
+            </div>
+          </div>
+
+          <div class="closing">
+            <div class="section-kicker">Final impression</div>
+            <h3>A warmer website that still feels credible.</h3>
+            <p>This version is visually stronger than the earlier draft, cleaner on mobile, and more aligned with the tone you want: caring, calm, and professional.</p>
+            <p>It avoids the biggest trust mistake from before, which was using a misleading stock clinician image. That was the right thing to remove.</p>
+            <p style="margin-bottom:0;">Best next upgrade after this: add your real logo and your real photo if you are comfortable using one. That will lift authenticity further.</p>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div>A Joint Effort Mobile Physiotherapy · Ivan · AHPRA Registered · NDIS Cleared · Fully Insured</div>
+      </footer>
+    </main>
   </div>
-</section>
-
-<footer>
-  <p><strong>A Joint Effort Mobile Physiotherapy</strong></p>
-  <p style="margin-top: 0.5rem;">Ivan · AHPRA Registered · NDIS Cleared · Fully Insured</p>
-  <p style="margin-top: 0.5rem;">ABN: 45 375 656 044 · Serving Western Brisbane & Ipswich · QLD</p>
-  <p style="margin-top: 0.5rem;">ajephysio.com.au</p>
-</footer>
-
 </body>
 </html>
