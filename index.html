@@ -222,8 +222,56 @@
     .trust-item:nth-child(even) { border-bottom: none; }
     .contact-grid { grid-template-columns: 1fr; }
   }
+  /* HAMBURGER */
+  .hamburger {
+    display: none; flex-direction: column; justify-content: center; gap: 5px;
+    width: 40px; height: 40px; background: none; border: none; cursor: pointer;
+    padding: 4px; border-radius: 8px; transition: background 0.2s;
+  }
+  .hamburger:hover { background: var(--maroon-light); }
+  .hamburger span {
+    display: block; width: 22px; height: 2px; background: var(--maroon);
+    border-radius: 2px; transition: transform 0.3s, opacity 0.3s;
+    transform-origin: center;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+  .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* MOBILE DRAWER */
+  .mobile-drawer {
+    display: none; position: fixed; top: 68px; left: 0; right: 0;
+    background: rgba(250,248,245,0.98); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 1.5rem 2rem;
+    flex-direction: column; gap: 0;
+    z-index: 99; box-shadow: 0 8px 32px rgba(107,30,58,0.1);
+    transform: translateY(-8px); opacity: 0;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+  .mobile-drawer.open {
+    transform: translateY(0); opacity: 1;
+  }
+  .mobile-drawer a {
+    display: block; padding: 0.9rem 0;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none; color: var(--dark); font-size: 1rem; font-weight: 500;
+    transition: color 0.2s;
+  }
+  .mobile-drawer a:hover { color: var(--maroon); }
+  .mobile-drawer a:last-child { border-bottom: none; }
+  .mobile-drawer .drawer-cta {
+    display: block; margin-top: 1.25rem;
+    background: var(--maroon); color: white; text-align: center;
+    padding: 0.9rem; border-radius: 100px; font-weight: 600; font-size: 0.95rem;
+    border-bottom: none;
+  }
+  .mobile-drawer .drawer-cta:hover { background: var(--maroon-mid); color: white; }
+
   @media (max-width: 640px) {
-    nav .nav-links { display: none; }
+    .hamburger { display: flex; }
+    .nav-links, .nav-cta { display: none; }
+    .mobile-drawer { display: flex; }
     nav { padding: 0 1.25rem; }
     .hero, section { padding: 3.5rem 1.25rem; }
     .trust-bar { padding: 2rem 1.25rem; }
@@ -244,7 +292,38 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="#booking" class="nav-cta">Book a visit</a>
+  <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<div class="mobile-drawer" id="mobile-drawer">
+  <a href="#services" onclick="closeDrawer()">Services</a>
+  <a href="#about" onclick="closeDrawer()">About Ivan</a>
+  <a href="#areas" onclick="closeDrawer()">Areas</a>
+  <a href="#booking" onclick="closeDrawer()">Book</a>
+  <a href="#contact" onclick="closeDrawer()">Contact</a>
+  <a href="#booking" class="drawer-cta" onclick="closeDrawer()">Book a visit →</a>
+</div>
+
+<script>
+  const btn = document.getElementById('hamburger');
+  const drawer = document.getElementById('mobile-drawer');
+  function closeDrawer() {
+    btn.classList.remove('open');
+    drawer.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  btn.addEventListener('click', () => {
+    const isOpen = drawer.classList.toggle('open');
+    btn.classList.toggle('open');
+    btn.setAttribute('aria-expanded', isOpen);
+  });
+  // Close on outside click
+  document.addEventListener('click', e => {
+    if (!btn.contains(e.target) && !drawer.contains(e.target)) closeDrawer();
+  });
+</script>
 
 <!-- HERO — AJE1 -->
 <div class="hero-wrap">
@@ -445,7 +524,7 @@
     <h2>Contact Ivan</h2>
     <div class="contact-grid">
       <div class="contact-card"><div class="contact-icon-wrap">📍</div><div><strong>Service area</strong><span>Jindalee to Ipswich corridor<br>Western Brisbane &amp; surrounds</span></div></div>
-      <div class="contact-card"><div class="contact-icon-wrap">📧</div><div><strong>Email</strong><a href="mailto:ivan@ajointeffort.com.au">ivan@ajointeffort.com.au</a></div></div>
+      <div class="contact-card"><div class="contact-icon-wrap">📧</div><div><strong>Email</strong><a href="/cdn-cgi/l/email-protection#f29b84939cb293989d9b9c869794949d8086dc919d9fdc9387"><span class="__cf_email__" data-cfemail="2c455a4d426c4d4643454258494a4a435e58024f4341024d59">[email&#160;protected]</span></a></div></div>
       <div class="contact-card"><div class="contact-icon-wrap">📱</div><div><strong>Phone</strong><a href="tel:0419213658">0419 213 658</a></div></div>
       <div class="contact-card"><div class="contact-icon-wrap">⏰</div><div><strong>Hours</strong><span>Wed &amp; Fri: 8am–6pm<br>Sat: by appointment only</span></div></div>
     </div>
@@ -457,8 +536,4 @@
   <div class="footer-divider"></div>
   <p>Ivan · AHPRA Registered · NDIS Cleared · Fully Insured</p>
   <p style="margin-top:0.5rem;">ABN: 45 375 656 · Western Brisbane &amp; Ipswich</p>
-  <p style="margin-top:1rem;font-size:0.72rem;opacity:0.6;">© 2025 A Joint Effort Mobile Physiotherapy. All rights reserved.</p>
-</footer>
-
-</body>
-</html>
+  <p style="
